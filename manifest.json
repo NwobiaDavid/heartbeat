@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "HeartBeat",
+  "description": "Automatically likes YouTube videos you watch (toggleable).",
+  "version": "1.0.0",
+  "permissions": ["storage", "scripting", "activeTab"],
+  "host_permissions": ["https://www.youtube.com/*"],
+  "action": {
+  "default_popup": "popup.html",
+  "default_title": "HeartBeat By LivingonEarth"
+  },
+  "background": {
+    "service_worker": "src/background.js"
+  },
+  "content_scripts": [
+    {
+    "matches": ["https://www.youtube.com/*"],
+    "js": ["src/content.js"],
+    "run_at": "document_idle"
+    }
+  ]
+}
