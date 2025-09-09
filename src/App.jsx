@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import "./App.css"
 
 const STORAGE_KEYS = {
   ENABLED: 'autolike_enabled',
