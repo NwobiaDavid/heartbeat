@@ -14,26 +14,28 @@ function debug(...args) {
 }
 
 // --- Settings management ---
+
 function loadSettings() {
   return new Promise((resolve) => {
-    chrome.storage.sync.get(
-      ['autolike_enabled', 'autolike_ignore_shorts', 'autolike_blacklist'],
-      (res) => {
-        settings.enabled =
-          res.autolike_enabled !== undefined
-            ? res.autolike_enabled
-            : DEFAULTS.enabled
-        settings.ignoreShorts =
-          res.autolike_ignore_shorts !== undefined
-            ? res.autolike_ignore_shorts
-            : DEFAULTS.ignoreShorts
-        settings.blacklist =
-          res.autolike_blacklist !== undefined
-            ? res.autolike_blacklist
-            : DEFAULTS.blacklist
-        resolve(settings)
-      }
-    )
+    try {
+      chrome.storage.sync.get(
+        ['autolike_enabled', 'autolike_ignore_shorts', 'autolike_blacklist'],
+        (res) => {
+          if (chrome.runtime.lastError) {
+            console.warn("[AutoLike] storage error:", chrome.runtime.lastError.message)
+            resolve(DEFAULTS)
+            return
+          }
+          settings.enabled = res.autolike_enabled ?? DEFAULTS.enabled
+          settings.ignoreShorts = res.autolike_ignore_shorts ?? DEFAULTS.ignoreShorts
+          settings.blacklist = res.autolike_blacklist ?? DEFAULTS.blacklist
+          resolve(settings)
+        }
+      )
+    } catch (e) {
+      console.warn("[AutoLike] context invalidated (caught)", e)
+      resolve(DEFAULTS)
+    }
   })
 }
 
