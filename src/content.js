@@ -76,25 +76,39 @@ function getChannelName() {
     '#text-container ytd-channel-name',
     'ytd-channel-name a',
     '#channel-name a',
-    'ytd-video-owner-renderer a'
+    'ytd-video-owner-renderer a',
+    'yt-core-attributed-string__link',
+    'a.yt-simple-endpoint'
   ]
   for (const sel of candidates) {
     const el = document.querySelector(sel)
-    if (el && el.textContent) return el.textContent.trim()
+    if (el) {
+      if (el.textContent && el.textContent.trim()) {
+        return el.textContent.trim()
+      }
+
+      if (el.getAttribute('href')?.startsWith('/@')) {
+        return el.getAttribute('href').slice(2)
+      }
+    }
   }
   return ''
 }
 
+function normalizeChannel(str) {
+  return str.replace(/^@/, '').trim().toLowerCase()
+}
+
 function isBlacklisted() {
   if (!settings.blacklist) return false
-  const channel = getChannelName().toLowerCase()
+
+  const channel = normalizeChannel(getChannelName())
   const parts = settings.blacklist
     .split(',')
-    .map((s) => s.trim().toLowerCase())
+    .map(normalizeChannel)
     .filter(Boolean)
-  return parts.some(
-    (p) => channel.includes(p) || channel === p
-  )
+
+  return parts.includes(channel)
 }
 
 // --- Core action ---
