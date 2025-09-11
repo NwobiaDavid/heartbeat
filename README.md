@@ -4,7 +4,7 @@ A lightweight Chrome extension that **automatically likes YouTube videos** from 
 
 ---
 
-## ✨ Features
+## Features
 
 * 👍 Auto-like videos as you watch
 * 🎯 Works with YouTube Shorts too
@@ -39,6 +39,11 @@ A lightweight Chrome extension that **automatically likes YouTube videos** from 
 
   * If the channel is **not blacklisted**, the like button is clicked automatically.
   * If the channel **is blacklisted**, nothing happens.
+
+---
+
+## 📸 Screenshot
+![Popup Screenshot](src/assets/popup.PNG)
 
 ---
 
