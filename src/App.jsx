@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import "./App.css"
+import './App.css';
 
 const STORAGE_KEYS = {
   ENABLED: 'autolike_enabled',
@@ -73,8 +73,18 @@ function App() {
   };
   return (
     <>
-      <div className="popup">
-        <h3>HeartBeat</h3>
+      <div className="popup heartbeat">
+        <header className="hb-header">
+          <div className="logo">
+          </div>
+          <div className="title-block">
+            <h1>HeartBeat</h1>
+            <p className="tagline">
+              Auto-like with ❤️ (but only the channels you want)
+            </p>
+          </div>
+        </header>
+
         <label className="row">
           <span>Enabled</span>
           <input
@@ -93,22 +103,26 @@ function App() {
           />
         </label>
 
-        <label>
+        <label className="field">
           <span>Channel blacklist (comma-separated names or IDs)</span>
           <textarea
-            rows={3}
             value={blacklist}
             onChange={(e) => setBlacklist(e.target.value)}
-            placeholder="e.g. SomeChannel, UCabcd1234"
+            placeholder="e.g. SomeChannel, UCabcd1234 or @SomeHandle"
           />
         </label>
-        <div className="row">
-          <button onClick={onSaveBlacklist}>Save Blacklist</button>
+
+        <div className="row controls">
+          <button className="btn primary" onClick={onSaveBlacklist}>
+            Save Blacklist
+          </button>
           <span className="status">{status}</span>
         </div>
 
         <footer>
-          <small>Note: selectors may break if YouTube changes UI.</small>
+          <small>
+            Note: selectors may break if YouTube changes UI. HeartBeat v1.0
+          </small>
         </footer>
       </div>
     </>
