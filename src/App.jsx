@@ -71,6 +71,14 @@ function App() {
     setStatus('Saved');
     setTimeout(() => setStatus(''), 900);
   };
+
+  const onClearBlacklist = async () => {
+    setBlacklist('');
+    await save(STORAGE_KEYS.BLACKLIST, '');
+    setStatus('Saved');
+    setTimeout(() => setStatus(''), 900);
+  };
+
   return (
     <>
       <div className="popup heartbeat">
@@ -81,7 +89,7 @@ function App() {
           <div className="title-block">
             <h1>HeartBeat</h1>
             <p className="tagline">
-              Auto-like with ❤️ (but only the channels you want)
+              Auto-like Youtube videos with ❤️ (but only the channels you want)
             </p>
           </div>
         </header>
@@ -107,6 +115,7 @@ function App() {
         <label className="field">
           <span>Channel blacklist (comma-separated names or IDs)</span>
           <textarea
+            id={'field'}
             value={blacklist}
             onChange={(e) => setBlacklist(e.target.value)}
             placeholder="e.g. SomeChannel, UCabcd1234 or @SomeHandle"
@@ -114,9 +123,14 @@ function App() {
         </label>
 
         <div className="row controls">
-          <button className="btn primary" onClick={onSaveBlacklist}>
-            Save Blacklist
-          </button>
+          <div className="btn-grid">
+            <button className="btn primary" onClick={onSaveBlacklist}>
+              Save Blacklist
+            </button>
+            <button className="btn" onClick={onClearBlacklist}>
+              Clear
+            </button>
+          </div>
           <span className="status">{status}</span>
         </div>
 
