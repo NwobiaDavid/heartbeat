@@ -44,6 +44,10 @@ body {
   border-radius: 8px;
 }
 
+.logo img {
+  width: 100%;
+}
+
 .title-block h1 {
   font-size: 16px;
   margin: 0;

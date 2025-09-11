@@ -76,6 +76,7 @@ function App() {
       <div className="popup heartbeat">
         <header className="hb-header">
           <div className="logo">
+            <img src="/heart.webp" alt="logo" />
           </div>
           <div className="title-block">
             <h1>HeartBeat</h1>
