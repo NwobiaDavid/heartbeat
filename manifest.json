@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "HeartBeat",
-  "description": "Automatically likes YouTube videos you watch (toggleable).",
+  "description": "Show YouTube creators some love — HeartBeat automatically likes the videos you watch (toggleable, with blacklist support).",
   "version": "1.0.0",
   "permissions": ["storage", "scripting", "activeTab"],
   "host_permissions": ["*://*.youtube.com/*"],
@@ -18,5 +18,13 @@
     "js": ["src/content.js"],
     "run_at": "document_idle"
     }
+  ],
+   "keywords": [
+    "YouTube auto like",
+    "auto like extension",
+    "YouTube shorts like",
+    "auto heart",
+    "YouTube enhancer",
+    "HeartBeat"
   ]
 }
