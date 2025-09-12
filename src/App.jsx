@@ -80,11 +80,10 @@ function App() {
   };
 
   return (
-    <>
       <div className="popup heartbeat">
         <header className="hb-header">
           <div className="logo">
-            <img src="/heart.webp" alt="logo" />
+            <img src="/heart.png" alt="logo" />
           </div>
           <div className="title-block">
             <h1>HeartBeat</h1>
@@ -127,7 +126,7 @@ function App() {
             <button className="btn primary" onClick={onSaveBlacklist}>
               Save Blacklist
             </button>
-            <button className="btn" onClick={onClearBlacklist}>
+            <button className="btn secondary" onClick={onClearBlacklist}>
               Clear
             </button>
           </div>
@@ -140,7 +139,6 @@ function App() {
           </small>
         </footer>
       </div>
-    </>
   );
 }
 
