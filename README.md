@@ -14,6 +14,17 @@ A lightweight Chrome extension that **automatically likes YouTube videos** from 
 
 
 
+## 🌐 Installation (Normal Users)
+
+1. Download the latest `heartbeat-dist.zip` from the [Releases page](https://github.com/NwobiaDavid/heartbeat/releases).
+2. Unzip it.
+3. Open **Chrome** → go to `chrome://extensions/`.
+4. Enable **Developer Mode** (top-right).
+5. Click **Load unpacked** and select the `dist` folder from inside the unzipped file.
+6. Done 🎉
+
+
+
 ## 🚀 Installation (Developer Mode)
 
 1. Clone this repo:
